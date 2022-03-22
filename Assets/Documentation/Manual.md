@@ -13,23 +13,25 @@ Behaviours
   
 AudioManager
 ------------------------
-Description
+This behaviour allows you to store all your audio files in one gameobject, adjusting the files properties and being able to reference them.
 
 ### Properties
 
--   `Sounds` 
--   `Name`
--   `Clip`
--   `Volume`
--   `Pitch`
--   `Loop`
--   `Group`
+-   `Sounds` - List that contains all the sounds
+-   `Name` - Name of the audio clip to refer to it
+-   `Clip` - Location of the audio file
+-   `Volume` - How loud the audio is
+-   `Pitch` - Adjust the pitch of the audio
+-   `Loop` - Decided if the audio clip should loop once it reaches the end
+-   `Group` - The Audio group that this clip belongs to, in order to adjust audio levels as a group.
 
 ### Script
+In order to use audio files we must reference Unity's Audio system.
 
 ```
 using UnityEngine.Audio;
 ```
+We create a list that stores all the audio files and instance it so that it will be present in all of our scenes, so we can use all the sounds in every single scene, for each audio clip that we add we add some properties that we can later adjust in the Inspector.
 
 ```
 public Sound[] sounds;
@@ -53,6 +55,11 @@ public Sound[] sounds;
             s.source.loop = s.loop;
         }
     }
+```
+    
+In order to call sounds within other scripts we create a public void with the string which will be our audioclips  `Name`
+    
+```
     public void Play(string name)
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
