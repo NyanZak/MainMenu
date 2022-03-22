@@ -210,6 +210,8 @@ Stops all the sounds in the scene playing.
 -   `Audio Source` - References all the audio sources present in the scene.
 
 ### Script
+We create a list for AudioSources. In the StopAllAudio void we find all the audio sources in the scene and stop each one playing.
+
 ```
     private AudioSource[] allAudioSources;
     public void StopAllAudio()
