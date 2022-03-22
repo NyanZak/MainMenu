@@ -1,0 +1,172 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &741160517012559086
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 741160517012559085}
+  - component: {fileID: 741160517673856287}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &741160517012559085
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 741160517012559086}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 33.08, z: 90}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &741160517673856287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 741160517012559086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d06adc97c2913134883cf31f0a5ac7cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: MainMenuMusic
+    clip: {fileID: 8300000, guid: bb00acd5d475a3042acf305ffbb791c3, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+    group: {fileID: 8268403788278141206, guid: 10e3356b8a9d3964c9b0e84edee6d8d3, type: 2}
+  - name: GameWinMusic
+    clip: {fileID: 8300000, guid: fdf25140d2f2fcd46aba0dfc778cc7d3, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+    group: {fileID: 8268403788278141206, guid: 10e3356b8a9d3964c9b0e84edee6d8d3, type: 2}
+  - name: GameOverMusic
+    clip: {fileID: 8300000, guid: 437ca72a4568551488e55214e3f20dac, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+    group: {fileID: 8268403788278141206, guid: 10e3356b8a9d3964c9b0e84edee6d8d3, type: 2}
+  - name: TutorialMusic
+    clip: {fileID: 8300000, guid: fbcfc5ff752c5f44e8c7226e2af8d82b, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+    group: {fileID: 8268403788278141206, guid: 10e3356b8a9d3964c9b0e84edee6d8d3, type: 2}
+  - name: Level1Music
+    clip: {fileID: 8300000, guid: cf45f49c41cc2c64681ade0122d0e291, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+    group: {fileID: 8268403788278141206, guid: 10e3356b8a9d3964c9b0e84edee6d8d3, type: 2}
+  - name: Level2Music
+    clip: {fileID: 8300000, guid: 3d9466724f00b98419131fa0c2061d98, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+    group: {fileID: 8268403788278141206, guid: 10e3356b8a9d3964c9b0e84edee6d8d3, type: 2}
+  - name: Level3Music
+    clip: {fileID: 8300000, guid: d93efc8e1e00c0548b68df0bb4136832, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+    group: {fileID: 8268403788278141206, guid: 10e3356b8a9d3964c9b0e84edee6d8d3, type: 2}
+  - name: VictoryNarration
+    clip: {fileID: 8300000, guid: 363d3026bd010a449ab7ea7bea871a61, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    group: {fileID: 5878427275202675849, guid: 10e3356b8a9d3964c9b0e84edee6d8d3, type: 2}
+  - name: FailNarration
+    clip: {fileID: 8300000, guid: be7b41a96d2344e428208dc7c6b5293d, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    group: {fileID: 5878427275202675849, guid: 10e3356b8a9d3964c9b0e84edee6d8d3, type: 2}
+  - name: ButtonClick
+    clip: {fileID: 8300000, guid: 43ecc19215bafbf4d93087f015080a86, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    group: {fileID: 5878427275202675849, guid: 10e3356b8a9d3964c9b0e84edee6d8d3, type: 2}
+  - name: ButtonExit
+    clip: {fileID: 8300000, guid: f61095cee2c202443aa636372853c166, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    group: {fileID: 5878427275202675849, guid: 10e3356b8a9d3964c9b0e84edee6d8d3, type: 2}
+  - name: TutorialNarration
+    clip: {fileID: 8300000, guid: 8cb023f06a03df443b3a40a91e16b484, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    group: {fileID: 5878427275202675849, guid: 10e3356b8a9d3964c9b0e84edee6d8d3, type: 2}
+  - name: Level1Narration
+    clip: {fileID: 8300000, guid: 99bfecf0034d6644296cc0803f17c585, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    group: {fileID: 5878427275202675849, guid: 10e3356b8a9d3964c9b0e84edee6d8d3, type: 2}
+  - name: Level2Narration
+    clip: {fileID: 8300000, guid: b58546b0654591947bb606dc488805bc, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    group: {fileID: 5878427275202675849, guid: 10e3356b8a9d3964c9b0e84edee6d8d3, type: 2}
+  - name: Level3Narration
+    clip: {fileID: 8300000, guid: 51752659b30a77644ac37d9681af7407, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    group: {fileID: 5878427275202675849, guid: 10e3356b8a9d3964c9b0e84edee6d8d3, type: 2}
+  - name: LevelSelectNarration
+    clip: {fileID: 8300000, guid: 99611897618cb6643a25aa5118c26f5a, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    group: {fileID: 5878427275202675849, guid: 10e3356b8a9d3964c9b0e84edee6d8d3, type: 2}
+  - name: LazerFire
+    clip: {fileID: 8300000, guid: 3a327a525bdbb8849b360ec30ba8b5c2, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    group: {fileID: 5878427275202675849, guid: 10e3356b8a9d3964c9b0e84edee6d8d3, type: 2}
+  - name: BalloonPop
+    clip: {fileID: 8300000, guid: 79e8d9e388b76114484ac9324daad2fb, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    group: {fileID: 5878427275202675849, guid: 10e3356b8a9d3964c9b0e84edee6d8d3, type: 2}
