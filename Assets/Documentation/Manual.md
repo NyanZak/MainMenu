@@ -123,13 +123,13 @@ Application.Quit();
 SettingsMenu
 -------
 
-Description
+This behaviour allows you to change the volume for every single sound as well as specifically the Music and SFX. It also allows you to adjust the games resolution, quality setting and if you want the game to be fullscreened or not.
 
 ### Properties
 
--   `AudioMixer` 
--   `MusicMixer`
--   `SFXMixer`
+-   `AudioMixer` - The parent mixer object that controls all the games sound
+-   `MusicMixer` - Controls the volume of sounds under the musicmixergroup
+-   `SFXMixer` - Controls the volume of sounds under the sfxmixergroup
 -   `ResolutionDropdown`
 
 ### Script
