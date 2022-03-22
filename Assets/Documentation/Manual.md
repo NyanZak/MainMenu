@@ -78,37 +78,45 @@ In order to call sounds within other scripts we create a public void with the st
 MainMenu
 ------------------------
 
-Description
+This behaviour allows you to load Twitter with preset messages to promote the game, you can also exit the game and switch to the next scene using buttons.
 
 ### Properties
 
--   `APP_PC_Link` 
--   `Twittername Parameter`
+-   `APP_PC_Link` - Link to the site where your game is located.
+-   `Twittername Parameter` - Message included in the tweet.
 
 ### Script
+In order to switch scenes we will need to use Unity's SceneManagement.
+
 ```
 using UnityEngine.SceneManagement;
 ```
+We create a few strings that will change what is tweeted for us, we are able to link the game as well as a brief description of it, in order to bring up twitters create tweet we link to its url, and you can even change the language if you or the game are not english.
 
 ```
 [SerializeField] private string APP_PC_LINK = "INSERT LINK HERE";
-   [SerializeField] private string twitternameParameter = "Just played GAME TITLE, GAME DESCRIPTION";
-    private string twitterdescriptionParam = "";
-    private const string TWITTER_ADDRESS = "http://twitter.com/intent/tweet";
-    private const string TWITTER_LANGUAGE = "en";
-    public void PlayGame()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    }
-    public void Promote()
-    {
-        Application.OpenURL(TWITTER_ADDRESS + "?text=" + WWW.EscapeURL(twitternameParameter + "\n" + twitterdescriptionParam + "\n" + APP_PC_LINK));
-    }
-    public void QuitGame()
-    {
-        Debug.Log("QUIT");
-        Application.Quit();
-    }
+[SerializeField] private string twitternameParameter = "Just played GAME TITLE, GAME DESCRIPTION";
+private string twitterdescriptionParam = "";
+private const string TWITTER_ADDRESS = "http://twitter.com/intent/tweet";
+private const string TWITTER_LANGUAGE = "en";
+```
+
+A few voids are made which will be mapped onto Button's OnClick event, this allows us to quickly transition the scene to the next one in the build index list, and you can also quit the game at the same time. Using the strings we created we can reference them when loading up the url which will take players to a new window.
+
+```
+public void PlayGame()
+{
+SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+}
+public void Promote()
+{
+Application.OpenURL(TWITTER_ADDRESS + "?text=" + WWW.EscapeURL(twitternameParameter + "\n" + twitterdescriptionParam + "\n" + APP_PC_LINK));
+}
+public void QuitGame()
+{
+Debug.Log("QUIT");
+Application.Quit();
+}
 }
 ```
 
