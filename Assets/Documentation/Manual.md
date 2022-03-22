@@ -130,9 +130,10 @@ This behaviour allows you to change the volume for every single sound as well as
 -   `AudioMixer` - The parent mixer object that controls all the games sound
 -   `MusicMixer` - Controls the volume of sounds under the musicmixergroup
 -   `SFXMixer` - Controls the volume of sounds under the sfxmixergroup
--   `ResolutionDropdown`
+-   `ResolutionDropdown`- Dropdown UI component that allows you to select between all the available resolutions
 
 ### Script
+In this script we are able to do many things such as load a specific scene and controlling audio while require the usage of UI systems and IEnumerables.
 ```
 using UnityEngine.Audio;
 using UnityEngine.UI;
@@ -141,62 +142,71 @@ using TMPro;
 using UnityEngine.SceneManagement;
 ```
 
+We start by referencing our 3 audio groups, the Audio Mixer which is the parent of both the Music and SFX Mixer has a different reference compared to the childs. We are also making use of TMP to improve the quality of the UI therefore we need to reference the TMPDropdown instead of the regular Dropdown. In order to display all ouf our resolutions we will be creating a list.
+
 ```
 public AudioMixer AudioMixer;
-    public AudioMixerGroup MusicMixer;
-    public AudioMixerGroup SFXMixer;
-    public TMP_Dropdown resolutionDropdown;
-    Resolution[] resolutions;
-    private void Start()
-    {
-        resolutions = Screen.resolutions.Select(resolution => new Resolution { width = resolution.width, height = resolution.height }).Distinct().ToArray();
-        resolutionDropdown.ClearOptions();
-        List<string> options = new List<string>();
-        int currentResolutionIndex = 0;
-        for (int i = 0; i < resolutions.Length; i++)
-        {
-            string option = resolutions[i].width + " x " + resolutions[i].height;
-            options.Add(option);
+public AudioMixerGroup MusicMixer;
+public AudioMixerGroup SFXMixer;
+public TMP_Dropdown resolutionDropdown;
+Resolution[] resolutions;
+```
+Because every computer is different they may not be able to use higher resolutions therefore it would be pointless including them in the List, therefore we will check the available resolutions when the game starts as the user will not be immediately put on the settings menu. In this start function we also set it so that the framerate is the highest possible, this means that if the users machine is capable of 60fps then all the resolutions will be 60fps, this also stops duplicate resolutions from showing every single possible framerate, making it much easier to scroll through the dropdown. 
+    
+``` 
+private void Start()
+{
+resolutions = Screen.resolutions.Select(resolution => new Resolution { width = resolution.width, height = resolution.height }).Distinct().ToArray();
+resolutionDropdown.ClearOptions();
+List<string> options = new List<string>();
+int currentResolutionIndex = 0;
+for (int i = 0; i < resolutions.Length; i++)
+{
+string option = resolutions[i].width + " x " + resolutions[i].height;
+options.Add(option);
+if (resolutions[i].width == Screen.width &&
+resolutions[i].height == Screen.height)
+{
+currentResolutionIndex = i;
+}
+}
+resolutionDropdown.AddOptions(options);
+resolutionDropdown.value = currentResolutionIndex;
+resolutionDropdown.RefreshShownValue();
+}
+``` 
+Using the resolution system we just created as well as using Unity's own settings, we can create multiple voids that we can assign to buttons using OnValueChanged, this can be used to change the volume as you move the sliders.
 
-            if (resolutions[i].width == Screen.width &&
-                resolutions[i].height == Screen.height)
-            {
-                currentResolutionIndex = i;
-            }
-        }
-        resolutionDropdown.AddOptions(options);
-        resolutionDropdown.value = currentResolutionIndex;
-        resolutionDropdown.RefreshShownValue();
-    }
-    public void LoadScene(int level)
-    {
-        SceneManager.LoadScene(level);
-    }
-    public void SetResolution(int ResolutionIndex)
-    {
-        Resolution resolution = resolutions[ResolutionIndex];
-        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
-    }
-    public void SetVolume(float volume)
-    {
-        AudioMixer.SetFloat("volume", volume);
-    }
-    public void SetMusicVolume(float MusicVolume)
-    {
-        AudioMixer.SetFloat("musicvolume", MusicVolume);
-    }
-   public void SetSFXVolume(float SFXVolume)
-    {
-        AudioMixer.SetFloat("sfxvolume", SFXVolume);
-    }
-    public void SetQuality(int qualityIndex)
-    {
-        QualitySettings.SetQualityLevel(qualityIndex);
-    }
-    public void SetFullscreen(bool isFullscreen)
-    {
-        Screen.fullScreen = isFullscreen;
-    }
+```
+public void LoadScene(int level)
+{
+SceneManager.LoadScene(level);
+}
+public void SetResolution(int ResolutionIndex)
+{
+Resolution resolution = resolutions[ResolutionIndex];
+Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+}
+public void SetVolume(float volume)
+{
+AudioMixer.SetFloat("volume", volume);
+}
+public void SetMusicVolume(float MusicVolume)
+{
+AudioMixer.SetFloat("musicvolume", MusicVolume);
+}
+public void SetSFXVolume(float SFXVolume)
+{
+AudioMixer.SetFloat("sfxvolume", SFXVolume);
+}
+public void SetQuality(int qualityIndex)
+{
+ QualitySettings.SetQualityLevel(qualityIndex);
+}
+public void SetFullscreen(bool isFullscreen)
+{
+Screen.fullScreen = isFullscreen;
+ }
 }
 ```
 
