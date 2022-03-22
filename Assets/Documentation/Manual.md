@@ -203,11 +203,11 @@ public AudioMixer AudioMixer;
 StopSounds
 ----------------------------------
 
-Description
+Stops all the sounds in the scene playing.
 
 ### Properties
 
--   `Audio Source` - Animation for the door opening
+-   `Audio Source` - References all the audio sources present in the scene.
 
 ### Script
 ```
